@@ -1,9 +1,11 @@
 mod collections;
-use collections::vectors::do_vector_stuff;
+use collections::vectors;
+use collections::strings;
 
 fn main() {
 
-    do_vector_stuff();
+    vectors::do_vector_stuff();
 
+    strings::string_stuff();
 
 }
