@@ -1,4 +1,40 @@
 use rand::Rng;
+use std::collections::HashMap;
+
+pub fn find_mean(vec: &Vec<i32>) -> i32 {
+    let mut total = 0;
+    for i in vec.iter() {
+        total += i;
+    }
+    total / vec.len() as i32
+}
+
+pub fn find_floating_mean(vec: &Vec<i32>) -> f64 {
+    let total = vec.iter().fold(0, |acc, x| acc + x);
+    total as f64 / vec.len() as f64
+}
+
+/// Finds the value that occurs most often in the given vector. TODO: generic implementation
+pub fn find_mode(vec: &Vec<i32>) -> Option<i32> {
+    let mut counts: HashMap<i32, i32> = HashMap::new();
+    for i in vec.iter() {
+        let count = counts.entry(*i).or_insert(0);
+        *count += 1;
+    }
+    match counts.iter().max_by_key(|&(key, value)| value) {
+        Some(entry) => Some(*entry.0),
+        None => None
+    }
+}
+
+pub fn generate_random_vec(lower_bound: i32, upper_bound: i32, size: usize) -> Vec<i32> {
+    let mut rng = rand::thread_rng();
+    let mut random_vec = Vec::with_capacity(size);
+    for _ in 0..size {
+        random_vec.push(rng.gen_range(lower_bound, upper_bound));
+    }
+    random_vec
+}
 
 pub fn do_vector_stuff() {
 
@@ -43,26 +79,4 @@ fn print_vector(vec: &Vec<i32>) {
         print!("{}, ", i);
     }
     println!();
-}
-
-pub fn find_mean(vec: &Vec<i32>) -> i32 {
-    let mut total = 0;
-    for i in vec.iter() {
-        total += i;
-    }
-    total / vec.len() as i32
-}
-
-pub fn find_floating_mean(vec: &Vec<i32>) -> f64 {
-    let total = vec.iter().fold(0, |acc, x| acc + x);
-    total as f64 / vec.len() as f64
-}
-
-pub fn generate_random_vec(lower_bound: i32, upper_bound: i32, size: usize) -> Vec<i32> {
-    let mut rng = rand::thread_rng();
-    let mut random_vec = Vec::with_capacity(size);
-    for _ in 0..size {
-        random_vec.push(rng.gen_range(lower_bound, upper_bound));
-    }
-    random_vec
 }

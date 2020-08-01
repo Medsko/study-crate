@@ -17,5 +17,6 @@ fn main() {
 
     exercises::exercise();
 
-    datatypes::ints();
+    // datatypes::ints();
+
 }
