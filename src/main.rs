@@ -1,3 +1,5 @@
+mod limits;
+use limits::datatypes;
 mod collections;
 use collections::vectors;
 use collections::strings;
@@ -14,4 +16,6 @@ fn main() {
     println!("13 divided by 4 gives int: {}", i);
 
     exercises::exercise();
+
+    datatypes::ints();
 }
