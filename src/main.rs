@@ -1,3 +1,4 @@
+mod exceptions;
 mod limits;
 use limits::datatypes;
 mod collections;
@@ -18,5 +19,7 @@ fn main() {
     exercises::exercise();
 
     // datatypes::ints();
+
+    exceptions::do_exceptional_stuff();
 
 }
