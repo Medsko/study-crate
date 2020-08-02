@@ -1,3 +1,4 @@
+mod prepackages;
 mod exceptions;
 mod limits;
 use limits::datatypes;
@@ -7,6 +8,13 @@ use collections::strings;
 use crate::collections::{hashmaps, exercises};
 
 fn main() {
+
+    // prepackages::gg::play_the_guessing_game();
+    // prepackages::variables::variate();
+    // prepackages::structs::structure();
+    // prepackages::enums::enums::enumerate();
+
+    // prepackages::ownership::own();
 
     // vectors::do_vector_stuff();
     //
