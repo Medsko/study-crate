@@ -1,6 +1,16 @@
 use rand::Rng;
 use std::collections::HashMap;
 
+/// Finds the 'middle' number of the given list of numbers; the number that is in the middle
+/// position when the list is sorted.
+pub fn find_median(vec: &Vec<i32>) -> i32 {
+    let mut vec = vec.to_vec();
+    vec.sort();
+    println!("Sorted vector: {:?}", vec);
+    vec[vec.len() / 2]
+}
+
+/// Determines the mean of the given values as an integer.
 pub fn find_mean(vec: &Vec<i32>) -> i32 {
     let mut total = 0;
     for i in vec.iter() {
@@ -9,6 +19,7 @@ pub fn find_mean(vec: &Vec<i32>) -> i32 {
     total / vec.len() as i32
 }
 
+/// Determines the mean of the given values as a float.
 pub fn find_floating_mean(vec: &Vec<i32>) -> f64 {
     let total = vec.iter().fold(0, |acc, x| acc + x);
     total as f64 / vec.len() as f64
