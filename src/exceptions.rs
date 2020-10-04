@@ -1,4 +1,4 @@
-use std::fs::{File, ReadDir};
+use std::fs::{File};
 use std::fs;
 use std::io;
 use std::io::Read;
@@ -34,6 +34,10 @@ pub fn do_exceptional_stuff() {
         Err(error) => println!("Something horrible happened: {:?}!", error),
     }
 
+    match succinct_read("hello.txt") {
+        Ok(user_name) => println!("User name read from file: {}", user_name),
+        Err(error) => println!("Something horrible happened: {:?}!", error),
+    }
 
 }
 
