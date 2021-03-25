@@ -1,8 +1,11 @@
+#![allow(dead_code)]
+
 mod prepackages;
 mod exceptions;
 mod limits;
-use limits::datatypes;
 mod collections;
+mod generics;
+use limits::datatypes;
 use collections::vectors;
 use collections::strings;
 use crate::collections::{hashmaps, exercises};
@@ -44,10 +47,13 @@ fn demonstrate_all() {
     hashmaps::hash_it_up();
     exceptions::do_exceptional_stuff();
     datatypes::ints();
+    generics::functions::find_largests();
+    generics::lifetimes::live_time();
 }
 
 fn demonstrate_latest() {
-
+    generics::functions::find_largests();
+    generics::lifetimes::live_time();
 }
 
 fn exercise() {
