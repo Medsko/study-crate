@@ -1,6 +1,7 @@
 use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
+use std::io::Write;
 
 struct Guess {
     value: i32
@@ -26,9 +27,10 @@ pub fn play_the_guessing_game() {
 
     let secret_number = rand::thread_rng().gen_range(1, 101);
 
-    println!("Guess a number: ");
-
     loop {
+
+        print!("Guess a number: ");
+        io::stdout().flush().ok();
 
         let mut guess_input = String::new();
         io::stdin()
@@ -53,5 +55,22 @@ pub fn play_the_guessing_game() {
                 break;
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    #[should_panic(expected = "Guess must be between 1 and 100! Passed value: 101")]
+    fn panics_on_greater_than_100() {
+        Guess::new(101);
+    }
+
+    #[test]
+    #[should_panic]
+    fn panics_on_smaller_than_1() {
+        Guess::new(0);
     }
 }
