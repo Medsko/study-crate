@@ -144,3 +144,25 @@ fn first_word(s: &String) -> usize {
     }
     s.len()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::slice_first_word;
+
+    #[test]
+    fn slice_first_word_returns_first() {
+        let normal_sentence = "I'd love to jiggle your toes".to_string();
+        let sliced_first_word = slice_first_word(&normal_sentence);
+
+        assert_eq!(sliced_first_word, "I'd")
+    }
+
+    #[test]
+    fn slice_first_word_returns_entire_word() {
+        let normal_sentence = "Supercalifraetc".to_string();
+        let sliced_first_word = slice_first_word(&normal_sentence);
+
+        assert_eq!(sliced_first_word, "Supercalifraetc")
+    }
+
+}
