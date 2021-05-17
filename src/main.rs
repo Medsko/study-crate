@@ -18,6 +18,7 @@ fn main() {
         println!("What do you want to run? Currently, the options are: ");
         println!(" - a demonstration of all code from the Rust book (type \"da\" and hit enter)");
         println!(" - a demonstration of the latest chapter from the Rust book (dl)");
+        println!(" - the new employee registration (in memory) system (er)");
         println!(" - all exercises that have been completed so far (ex)");
 
         let mut input = String::new();
@@ -28,6 +29,7 @@ fn main() {
         match input.trim() {
             "da" => demonstrate_all(),
             "dl" => demonstrate_latest(),
+            "er" => exercises::employee_registration(),
             "ex" => exercise(),
             "exit" => break,
             _ => println!("That is not a valid option!")
@@ -52,8 +54,7 @@ fn demonstrate_all() {
 }
 
 fn demonstrate_latest() {
-    generics::functions::find_largests();
-    generics::lifetimes::live_time();
+    exercises::employee_registration();
 }
 
 fn exercise() {
