@@ -33,7 +33,7 @@ fn got_game() -> String {
 pub fn to_pig_latin(kosher: &String) -> String {
     let trimmed = kosher.trim();
     let mut chars = trimmed.chars();
-    let mut suffix: String;
+    let suffix: String;
     let mut result = String::new();
 
     let first_char = chars.next().unwrap();

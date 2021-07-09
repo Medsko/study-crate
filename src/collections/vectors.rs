@@ -6,7 +6,6 @@ use std::collections::HashMap;
 pub fn find_median(vec: &Vec<i32>) -> i32 {
     let mut vec = vec.to_vec();
     vec.sort();
-    println!("Sorted vector: {:?}", vec);
     vec[vec.len() / 2]
 }
 

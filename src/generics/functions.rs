@@ -53,7 +53,7 @@ pub fn largest_reference<T: PartialOrd>(list: &[T]) -> &T {
 }
 
 pub fn find_largests() {
-    let number_list = vec![48, 234, 39,5];
+    let number_list = vec![48, 234, 39, 5];
 
     let result = largest_i32(&number_list);
     println!("Largest number: {}", result);
@@ -65,4 +65,19 @@ pub fn find_largests() {
 
     println!("Largest number using generics: {}", largest(&number_list));
     println!("Largest char using generics: {}", largest(&char_list));
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::generics::functions::largest;
+
+    #[test]
+    fn test_find_largest() {
+        let number_list = vec![48, 234, 39, 5];
+        let char_list = vec!['a', 'x', 'm'];
+
+        assert_eq!(234, largest(&number_list));
+        assert_eq!('x', largest(&char_list));
+    }
+
 }

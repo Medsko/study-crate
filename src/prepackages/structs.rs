@@ -34,8 +34,6 @@ fn first_structs() {
         ..first_user    // ...Rust's version of spread operator
     };
 
-    let black = Color(0,0,0);
-    let origin = Point(0,0,0);
 }
 
 fn build_user(email: String, username1: String) -> User {

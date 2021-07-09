@@ -6,7 +6,7 @@ use std::io::Read;
 pub fn do_exceptional_stuff() {
     // panic!("Crash and burn");
 
-    let hello_file = match File::open("hello.txt") {
+    let _ = match File::open("hello.txt") {
         Ok(file) => file,
         Err(error) =>  match error.kind() {
             io::ErrorKind::NotFound => match File::create("hello.txt") {
@@ -19,7 +19,7 @@ pub fn do_exceptional_stuff() {
 
     let directory = match fs::read_dir(".") {
         Ok(files) => files,
-        Err(error) => panic!("Could not read the current directory!")
+        Err(_) => panic!("Could not read the current directory!")
     };
 
     for file in directory {
@@ -66,4 +66,24 @@ fn succinct_read(file: &str) -> Result<String, io::Error> {
     // File::open(file)?.read_to_string(&mut s)?;
     // Ok(s)
     fs::read_to_string(file)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_read_username_from_file() {
+        let result = read_username_from_file("hello.txt");
+        assert!(result.is_ok());
+        assert_eq!("Hänkie", result.unwrap());
+    }
+
+    #[test]
+    fn test_succinct_read() {
+        let result = succinct_read("hello.txt");
+        assert!(result.is_ok());
+        assert_eq!("Hänkie", result.unwrap());
+    }
+
 }
