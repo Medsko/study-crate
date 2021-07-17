@@ -5,7 +5,7 @@ mod exceptions;
 mod limits;
 mod collections;
 mod generics;
-use limits::datatypes;
+mod fp;
 use collections::vectors;
 use collections::strings;
 use crate::collections::{hashmaps, exercises};
@@ -48,7 +48,7 @@ fn demonstrate_all() {
     strings::string_stuff();
     hashmaps::hash_it_up();
     exceptions::do_exceptional_stuff();
-    datatypes::ints();
+    limits::ints();
     generics::functions::find_largests();
     generics::lifetimes::live_time();
 }
