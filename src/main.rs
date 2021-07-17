@@ -51,6 +51,14 @@ fn demonstrate_all() {
     limits::ints();
     generics::functions::find_largests();
     generics::lifetimes::live_time();
+    demonstrate_workout_generation();
+}
+
+fn demonstrate_workout_generation() {
+    let simulated_user_specified_value = 10;
+    let simulated_random_number = 7;
+
+    fp::closures::generate_workout(simulated_user_specified_value, simulated_random_number);
 }
 
 fn demonstrate_latest() {

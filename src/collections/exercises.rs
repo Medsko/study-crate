@@ -72,7 +72,7 @@ fn remove_employee(register: &mut HashMap<String, Vec<String>>, other_words: &mu
     // other_words.next(); // Skip the presumed 'from'
     let employee_name = match extract_full_name(other_words, "from") {
         Ok(name) => name,
-        Err(msg) => panic!(msg)
+        Err(msg) => panic!("{}", msg)
     };
     let department = other_words.next().unwrap().to_string();
     let mut department_employees = register.remove(&department).unwrap_or(Vec::new());
@@ -108,7 +108,7 @@ fn extract_full_name(words: &mut SplitWhitespace, stop: &str) -> Result<String, 
 fn register_employee(register: &mut HashMap<String, Vec<String>>, other_words: &mut SplitWhitespace) {
     let employee_name = match extract_full_name(other_words, "to") {
         Ok(name) => name,
-        Err(msg) => panic!(msg)
+        Err(msg) => panic!("{}", msg)
     };
     let department = other_words.next().unwrap().to_string();
     let mut department_employees = register.remove(&department).unwrap_or(Vec::new());
