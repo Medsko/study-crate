@@ -1,6 +1,6 @@
+use std::collections::HashMap;
 use std::thread;
 use std::time::Duration;
-use std::collections::HashMap;
 
 struct Cacher<T> where T: Fn(u32) -> u32, {
     calculation: T,
@@ -19,8 +19,14 @@ where
     }
 
     fn value(&mut self, arg: u32) -> u32 {
-        *self.values.entry(arg)
-            .or_insert((self.calculation)(arg))
+        match self.values.get(&arg) {
+            Some(val) => *val,
+            None => {
+                let calculated_value = (self.calculation)(arg);
+                self.values.insert(arg, calculated_value);
+                calculated_value
+            }
+        }
     }
 }
 
@@ -70,8 +76,9 @@ pub fn generate_workout(intensity: u32, random_number: u32) {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use std::time::{SystemTime, SystemTimeError};
+
+    use super::*;
 
     #[test]
     fn simulated_expensive_calculation_closure() {
