@@ -1,8 +1,10 @@
 [package]
 name = "study-crate"
 version = "0.1.0"
-authors = ["Melle de Vries <melle@openweb.nl>"]
+authors = ["Medsko <medsko@posteo.net>"]
 edition = "2018"
+description = "A testament to anarchy, this crate bears witness to my consumption of the Rust book."
+licence = "MIT OR GPL-3.0-or-later"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
