@@ -1,7 +1,13 @@
 use std::ops::Deref;
+use std::rc::Rc;
 
 enum List {
     Cons(i32, Box<List>),
+    Nil,
+}
+
+enum RcList {
+    Cons(i32, Rc<RcList>),
     Nil,
 }
 
@@ -39,6 +45,20 @@ fn hello(name: &str) {
 mod tests {
     use super::*;
     use super::List::{Cons, Nil};
+
+    #[test]
+    fn multiple_references_cons() {
+        let oc_list = Rc::new(RcList::Cons(5, Rc::new(
+            RcList::Cons(10, Rc::new(RcList::Nil)))));
+        println!("Count after creating original cons list: {}", Rc::strong_count(&oc_list));
+        let reference_a = RcList::Cons(3, Rc::clone(&oc_list));
+        println!("Count after creating first reference: {}", Rc::strong_count(&oc_list));
+        {
+            let reference_b = RcList::Cons(4, Rc::clone(&oc_list));
+            println!("Count after creating second reference: {}", Rc::strong_count(&oc_list));
+        }
+        println!("Count after second reference goes out of scope: {}", Rc::strong_count(&oc_list));
+    }
 
     #[test]
     fn early_drop() {
