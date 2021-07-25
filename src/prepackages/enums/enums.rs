@@ -13,7 +13,7 @@ enum ConciseIpAddr {
 }
 
 #[derive(Debug)]
-enum Message {  // Iedere variant van een enum krijgt zn eigen Struct definitie, dus:
+pub enum Message {  // Iedere variant van een enum krijgt zn eigen Struct definitie, dus:
 Quit,                       // - geen velden (Unit struct)
 Move { x: i32, y: i32 },    // - named fields (Waaaaaaat)
 Write(String),              // - tuple Struct
