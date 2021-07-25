@@ -1,15 +1,19 @@
 #![allow(dead_code)]
 
+use std::io;
+
+use collections::strings;
+use collections::vectors;
+
+use crate::collections::{exercises, hashmaps};
+
 mod prepackages;
 mod exceptions;
 mod limits;
 mod collections;
 mod generics;
 mod fp;
-use collections::vectors;
-use collections::strings;
-use crate::collections::{hashmaps, exercises};
-use std::io;
+mod pointers;
 
 fn main() {
 
