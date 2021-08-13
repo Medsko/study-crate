@@ -14,6 +14,7 @@ mod collections;
 mod generics;
 mod fp;
 mod pointers;
+mod concurrent;
 
 fn main() {
 
@@ -24,6 +25,7 @@ fn main() {
         println!(" - a demonstration of the latest chapter from the Rust book (dl)");
         println!(" - the new employee registration (in memory) system (er)");
         println!(" - all exercises that have been completed so far (ex)");
+        println!("Entering 'exit' will quietly resolve the choice paralysis you are experiencing.");
 
         let mut input = String::new();
         io::stdin()
@@ -56,6 +58,9 @@ fn demonstrate_all() {
     generics::functions::find_largests();
     generics::lifetimes::live_time();
     demonstrate_workout_generation();
+    concurrent::channel::out_to_sea();
+    concurrent::channel::far_out_to_sea();
+    concurrent::lock::contest_lock();
 }
 
 fn demonstrate_workout_generation() {
@@ -66,7 +71,8 @@ fn demonstrate_workout_generation() {
 }
 
 fn demonstrate_latest() {
-    exercises::employee_registration();
+    concurrent::channel::far_out_to_sea();
+    concurrent::lock::contest_lock();
 }
 
 fn exercise() {
