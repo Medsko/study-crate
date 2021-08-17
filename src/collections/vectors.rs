@@ -1,7 +1,8 @@
 #![allow(dead_code)]
 
-use rand::Rng;
 use std::collections::HashMap;
+
+use rand::Rng;
 
 /// Finds the 'middle' number of the given list of numbers; the number that is in the middle
 /// position when the list is sorted.
@@ -32,7 +33,7 @@ pub fn find_mode(vec: &Vec<i32>) -> Option<i32> {
     for i in vec.iter() {
         *counts.entry(*i).or_insert(0) += 1;
     }
-    match counts.iter().max_by_key(|&(key, value)| value) {
+    match counts.iter().max_by_key(|&(_key, value)| value) {
         Some(entry) => Some(*entry.0),
         None => None
     }

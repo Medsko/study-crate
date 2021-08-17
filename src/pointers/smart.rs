@@ -51,10 +51,10 @@ mod tests {
         let oc_list = Rc::new(RcList::Cons(5, Rc::new(
             RcList::Cons(10, Rc::new(RcList::Nil)))));
         println!("Count after creating original cons list: {}", Rc::strong_count(&oc_list));
-        let reference_a = RcList::Cons(3, Rc::clone(&oc_list));
+        let _reference_a = RcList::Cons(3, Rc::clone(&oc_list));
         println!("Count after creating first reference: {}", Rc::strong_count(&oc_list));
         {
-            let reference_b = RcList::Cons(4, Rc::clone(&oc_list));
+            let _reference_b = RcList::Cons(4, Rc::clone(&oc_list));
             println!("Count after creating second reference: {}", Rc::strong_count(&oc_list));
         }
         println!("Count after second reference goes out of scope: {}", Rc::strong_count(&oc_list));
@@ -76,7 +76,7 @@ mod tests {
         let boxy = CustomSmartPointer{
             data: String::from("Picard")
         };
-        println!("Created a pointer.");
+        println!("Created a pointer: {}", boxy.data);
     }
 
     #[test]
@@ -88,7 +88,7 @@ mod tests {
 
     #[test]
     fn create_cons_list() {
-        let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
+        let _list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
     }
 
     #[test]

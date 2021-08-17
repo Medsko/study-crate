@@ -42,7 +42,7 @@ pub fn find_mode_generic<T: Eq + Hash>(vec: &Vec<T>) -> Option<&T> {
         let copy = i.clone();
         *counts.entry(copy).or_insert(0) += 1;
     }
-    match counts.iter().max_by_key(|&(key, value)| value) {
+    match counts.iter().max_by_key(|&(_key, value)| value) {
         Some(entry) => Some(entry.0),
         None => None
     }

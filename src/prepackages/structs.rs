@@ -28,7 +28,7 @@ fn first_structs() {
     first_user.sign_in_count += 1;
 
     // 'Struct update syntax' example.
-    let second_user = User {
+    let _second_user = User {
         email: "new.email@address.org".to_string(),
         username: "HenkieIsNieGek".to_string(),
         ..first_user    // ...Rust's version of spread operator

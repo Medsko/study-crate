@@ -46,17 +46,17 @@ fn simulated_expensive_calculation_closure() -> fn(u32) -> u32 {
 
 // ...and what if the closure returning a closure returns a closure ok I'm done.
 fn ridiculous_closure() -> fn(u32) -> fn(u32) -> u32 {
-    |num| {
+    |_| {
         println!("calculating slowly...");
         thread::sleep(Duration::from_secs(2));
-        |nums| {
+        |_| {
             12
         }
     }
 }
 
 pub fn generate_workout(intensity: u32, random_number: u32) {
-    let mut expensive_result = Cacher::new(|num| {
+    let mut expensive_result = Cacher::new(|_| {
         println!("calculating slowly...");
         thread::sleep(Duration::from_secs(2));
         intensity
@@ -76,7 +76,7 @@ pub fn generate_workout(intensity: u32, random_number: u32) {
 
 #[cfg(test)]
 mod tests {
-    use std::time::{SystemTime, SystemTimeError};
+    use std::time::SystemTime;
 
     use super::*;
 
@@ -115,7 +115,7 @@ mod tests {
     fn call_with_different_values() {
         let mut c = Cacher::new(|a| a);
 
-        let v1 = c.value(1);
+        let _v1 = c.value(1);
         let v2 = c.value(2);
 
         assert_eq!(v2, 2);

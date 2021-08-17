@@ -26,7 +26,7 @@ impl Message {
         // Do some pattern matched stuff specific for this enum variant
         match self {
             Message::Write(message) => println!("{}", message),
-            Message::Move{x, y} => println!("Moving {} up and {} right", x, y),
+            Message::Move { x, y } => println!("Moving {} up and {} right", x, y),
             Message::ChangeColor(r, g, b) => println!("Changing rgb ({},{},{})", r, g, b),
             _ => () // In all other cases: do nothing
         }
@@ -41,17 +41,17 @@ struct IpAddr {
 
 pub fn enumerate() {
 
-    let four = IpAddrKind::V4;
-    let hip = IpAddrKind::V6;
+    let _four = IpAddrKind::V4;
+    let _hip = IpAddrKind::V6;
 
-    let loopback = IpAddr {
+    let _loopback = IpAddr {
         kind: IpAddrKind::V6,
         address: "::1".to_string(),
     };
 
-    let concise_loopback = ConciseIpAddr::V6(String::from("::1"));
+    let _concise_loopback = ConciseIpAddr::V6(String::from("::1"));
 
-    let home = ConciseIpAddr::V4(127, 0, 0, 1);
+    let _home = ConciseIpAddr::V4(127, 0, 0, 1);
 
     let message_to_write = Message::Write("I want to write this message".to_string());
     message_to_write.call();

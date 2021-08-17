@@ -66,16 +66,16 @@ fn references_and_borrowing() {
     let complicated_string = string_to_length(complicated_string);
     println!("Length {} is now all that is left of that complicated string variable...", complicated_string);
 
-    let yet_another_string = "Hi".to_string();
+    let _yet_another_string = "Hi".to_string();
     // legalized_modification(&mut yet_another_string); // Can't borrow an immutable variable as mutable
     let mut yet_another_string = "Hi".to_string();
     legalized_modification(&mut yet_another_string);    // Now we're cooking
 
     // These two can co-exist without issue
-    let immutable_pointer = &yet_another_string;
-    let another_immutable_pointer = &yet_another_string;
+    let _immutable_pointer = &yet_another_string;
+    let _another_immutable_pointer = &yet_another_string;
     // However, this one will fuck shit up:
-    let pointer = &mut yet_another_string;
+    let _pointer = &mut yet_another_string;
     // let another_pointer = &mut yet_another_string;   // Only one mutable reference to value allowed at a time
 
     // Still, all above stuff will compile as long as the naughty variables aren't actually used/referenced
@@ -111,7 +111,10 @@ fn slice_stuff() {
     let splice_first_four_chars = &s[0..4];
     let splice_first_four_chars_also = &s[..4];
 
-    let splice_chars_from_fourth = &s[4..];
+    println!("First four characters: {:?}", splice_first_four_chars);
+    println!("Same, but with syntax saving one keystroke: {:?}", splice_first_four_chars_also);
+
+    let _splice_chars_from_fourth = &s[4..];
 
 
 }
